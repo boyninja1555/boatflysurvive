@@ -3,6 +3,8 @@
     <p>Paper plugin adding survival-compatible boatfly!</p>
 </div>
 
+---
+
 **Boatfly's awesome, right?** This awesome plugin nearly recreates the experience server-side, and survival-friendly.
 
 Got lava? Put it in a chest boat! Wanna fly? Look up! Lava functions as fuel, as long as you're seated inside the boat.
