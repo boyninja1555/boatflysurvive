@@ -21,10 +21,12 @@ public class BoatSystem {
         flyers.put(player.getUniqueId(), boat.getUniqueId());
         flyingBoats.add(boat.getUniqueId());
         boat.setGravity(false);
+        boat.setMaxSpeed(_Globals.BOAT_SPEED);
     }
 
     public static void cutEngine(Player player, ChestBoat boat) {
         boat.setGravity(true);
+        boat.setMaxSpeed(.4);
         flyers.remove(player.getUniqueId());
         flyingBoats.remove(boat.getUniqueId());
     }

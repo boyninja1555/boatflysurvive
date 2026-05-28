@@ -4,7 +4,7 @@ import org.bukkit.Material;
 import org.bukkit.Sound;
 
 public class _Globals {
-    public static final double BOAT_SPEED_MULTIPLIER = 50;
+    public static final double BOAT_SPEED = 5;
     public static final Material FUEL = Material.LAVA_BUCKET;
     public static final Material FUEL_USED = Material.BUCKET;
     public static final long TICKS_BETWEEN_CONTROLS = 1L;
