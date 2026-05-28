@@ -8,24 +8,33 @@ import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.util.Vector;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.UUID;
+import java.util.*;
 
 public class BoatSystem {
     private static final Map<UUID, UUID> flyers = new HashMap<>();
+    private static final List<UUID> flyingBoats = new ArrayList<>();
 
     public static void attemptFly(Player player, ChestBoat boat) {
         Inventory inventory = boat.getInventory();
         if (inventory.isEmpty()) return;
         if (!inventory.contains(_Globals.FUEL)) return;
         flyers.put(player.getUniqueId(), boat.getUniqueId());
+        flyingBoats.add(boat.getUniqueId());
         boat.setGravity(false);
     }
 
     public static void cutEngine(Player player, ChestBoat boat) {
         boat.setGravity(true);
         flyers.remove(player.getUniqueId());
+        flyingBoats.remove(boat.getUniqueId());
+    }
+
+    public static boolean isPlayerFlying(Player player) {
+        return flyers.containsKey(player.getUniqueId());
+    }
+
+    public static boolean isBoatFlying(ChestBoat boat) {
+        return flyingBoats.contains(boat.getUniqueId());
     }
 
     public static void tickControls() {
@@ -37,7 +46,7 @@ public class BoatSystem {
             float pitch = player.getPitch();
             double targetY = -pitch / 90 * .12;
             Vector velocity = boat.getVelocity();
-            velocity.setY(targetY * .7 + targetY * .3);
+            velocity.setY(targetY);
             boat.setVelocity(velocity);
         });
     }
@@ -67,6 +76,13 @@ public class BoatSystem {
             return;
         }
 
-        inventory.removeItem(ItemStack.of(_Globals.FUEL, 1));
+        int slot = inventory.first(_Globals.FUEL);
+        if (slot == -1) return;
+
+        ItemStack fuel = inventory.getItem(slot);
+        if (fuel == null) return;
+
+        ItemStack usedFuel = new ItemStack(_Globals.FUEL_USED, fuel.getAmount());
+        inventory.setItem(slot, usedFuel);
     }
 }

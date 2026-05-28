@@ -3,7 +3,7 @@ plugins {
 }
 
 group = "com.boyninja1555"
-version = "1"
+version = "2"
 
 repositories {
     mavenCentral()

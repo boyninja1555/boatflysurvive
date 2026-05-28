@@ -1,5 +1,5 @@
 name: BoatflySurvive
-version: "1"
+version: "2"
 main: com.boyninja1555.boatflysurvive.BoatflySurvive
 api-version: "1.21"
 authors: [ boyninja1555 ]
