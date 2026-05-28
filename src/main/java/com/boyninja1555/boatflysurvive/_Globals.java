@@ -1,6 +1,7 @@
 package com.boyninja1555.boatflysurvive;
 
 import org.bukkit.Material;
+import org.bukkit.Particle;
 import org.bukkit.Sound;
 
 public class _Globals {
@@ -11,4 +12,5 @@ public class _Globals {
     public static final long TICKS_BETWEEN_AMBIENCE = 5L;
     public static final long TICKS_BETWEEN_CONSUMPTION = 20L * 10;
     public static final Sound ENGINE_SOUND = Sound.ENTITY_ENDER_DRAGON_FLAP;
+    public static final Particle ENGINE_PARTICLE = Particle.FLAME;
 }

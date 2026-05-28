@@ -2,6 +2,7 @@ package com.boyninja1555.boatflysurvive;
 
 import org.bukkit.Server;
 import org.bukkit.SoundCategory;
+import org.bukkit.World;
 import org.bukkit.entity.ChestBoat;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
@@ -57,7 +58,9 @@ public class BoatSystem {
         Server server = BoatflySurvive.server;
         flyers.forEach((playerId, boatId) -> {
             if (!(server.getEntity(boatId) instanceof ChestBoat boat)) return;
-            boat.getWorld().playSound(boat.getLocation(), _Globals.ENGINE_SOUND, SoundCategory.AMBIENT, 1f, 1f);
+            World world = boat.getWorld();
+            world.playSound(boat.getLocation(), _Globals.ENGINE_SOUND, SoundCategory.AMBIENT, 1f, 1f);
+            world.spawnParticle(_Globals.ENGINE_PARTICLE, boat.getLocation(), 20);
         });
     }
 
